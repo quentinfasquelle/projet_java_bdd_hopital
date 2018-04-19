@@ -1,0 +1,39 @@
+SERVICE (CODE, NOM, BATIMENT, DIRECTEUR)
+CHAMBRE (NO_CHAMBRE, #CODE_SERVICE, SURVEILLANT, NB_LITS)
+EMPLOYE (NUMERO, NOM, PRENOM, TEL, ADRESSE)
+DOCTEUR (#NUMERO, SPECIALITE)
+INFIRMIER (#NUMERO, #CODE_SERVICE, ROTATION, SALAIRE)
+MALADE (NUMERO, NOM, PRENOM, TEL, ADRESSE, MUTUELLE)
+HOSPITALISATION (NO_MALADE, #CODE_SERVICE, #NO_CHAMBRE, LIT)
+SOIGNE (#NO_DOCTEUR, #NO_MALADE)
+
+Un service se trouve logé dans un seul bâtiment, mais plusieurs services peuvent partager un bâtiment
+? Le directeur d’un service est un docteur identifié par son NUMERO
+? Le numéro de CHAMBRE est local à un bâtiment (i.e. chaque bâtiment possède une CHAMBRE numéro 1)
+? Une chambre n’identifie pas directement le bâtiment qui la contient, mais indirectement par le code de son service
+? Un(e) surveillant(e) est un(e) infirmier(ère) identifié(e) par son NUMERO
+? Les informations communes à tous les employés sont dans la relation EMPLOYE qui contient donc docteurs,
+infirmiers(ères) ainsi que d’autres employés
+? Le triplet (NOM, PRENOM, TEL) est considéré comme une clé de la relation EMPLOYE
+? Docteurs et infirmiers(ères) sont donc des employés identifiés par un unique numéro
+? La relation DOCTEUR comporte les attributs spécifiques des docteurs
+? La spécialité des docteurs est définie sur une liste de valeurs permises, ‘Anesthesiste’, ‘Cardiologue’, ‘Generaliste’,
+‘Orthopediste’, …
+? La relation INFIRMIER comporte les attributs spécifiques des infirmiers(ères)
+? La rotation (pour simplifier) prend les valeurs ‘JOUR’ et ‘NUIT’
+? Un(e) infirmier(ère) est affecté(e) à un service
+? Les docteurs ne sont pas affectés à un service particulier mais sont souvent amenés à exercer de façon transversale
+? Le concepteur de la base de données a choisi de maintenir les malades dans une relation séparée qui comporte tous les
+attributs nécessaires
+? Le triplet (NOM, PRENOM, TEL) est également une clé de la relation MALADE
+? La relation HOSPITALISATION ne concerne que les malades hospitalisés à l’état courant de la BD
+
+
+
+
+Votre interface graphique constitue la Vue dépendante du Contrôleur (modules de Recherche, de Mise à jour et de
+Génération) qui interroge les données (Modèle) de la base, via le module de Connexion, pour transmettre ces données à
+l’interface graphique qui les affiche. Votre interface graphique sera évènementielle (touches clavier ou/et clics souris). Une
+fenêtre d’accueil permettra vous connecter à la BDD localement ou à distance en saisissant le nom de la base, votre login
+et votre password. Votre interface graphique affichera de manière ergonomique, claire et fluide toutes les informations
+pertinentes de la BDD exploitées par le système.
